@@ -1,0 +1,14 @@
+#ifndef ACOES_MENU
+#define ACOES_MENU
+
+#define NENHUM_ITEM_SELECIONADO 	-1
+#define SELECIONAR_TIMES		0
+#define SELECIONAR_TEMPO		1
+#define COMECAR_JOGO			2
+#define FECHAR_JOGO			3
+
+#define UM_MINUTO				60
+#define DOIS_MINUTOS			120
+#define QUATRO_MINUTOS			240
+
+#endif

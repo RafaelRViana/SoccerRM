@@ -1,0 +1,29 @@
+#ifndef DIMENSOES
+#define DIMENSOES
+
+#define LIMITE_ESQUERDA 	0
+#define LIMITE_DIREITA 		790
+#define LIMITE_INFERIOR 	410
+#define LIMITE_SUPERIOR 	0
+
+#define MAX_X         		800
+#define MAX_Y         		600
+
+#define LARGURA_GOLEIRA 	20
+#define ALTURA_GOLEIRA 		130
+
+#define ALTURA_GOLEIRO		45 
+#define LARGURA_GOLEIRO		12
+
+#define ALTURA_JOGADOR 		90
+#define LARGURA_JOGADOR 	12
+
+#define ALTURA_AREA		350			
+#define LARGURA_AREA		100
+
+#define LIMITE_SUPERIOR_AREA	150
+#define LIMITE_INFERIOR_AREA	312
+
+#define ALTURA_CAMPO 		500
+
+#endif
