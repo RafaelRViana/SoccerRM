@@ -63,3 +63,14 @@ ESC - Sair
 - - Aumentar velocidade do jogo
 
 Observação: Na tela Select Team ao clicar nas setas para mudar as equipes o clique nem sempre está funcionando, deve-se clicar mais de uma vez para a seta mudar o time.Isso também pode ocorrer na tela Select Time o mouse não está funcionando nas coordenadas corretamente, devido à uma falha da biblioteca Allegro com a manipulação do mouse.
+
+
+#Contribuições
+CiroboyBR - https://github.com/CiroboyBR
+
+
+
+screenshot 1:
+![alt tag](screen1.jpg)
+screenshot 2:
+![alt tag](screen2.jpg)

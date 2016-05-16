@@ -21,13 +21,13 @@ void iniciarPartida(BITMAP *buffer, ConfiguracoesJogo *configuracoes);
 void mostrarMenuInicial(BITMAP *buffer);
 
 /**
-*	Funções para inicializar e finalizar a biblioteca Allegro 
+*	Funções para inicializar e finalizar a biblioteca Allegro
 */
 int inicia(void);
 void finaliza(void);
 
 /**
-*	Funções para fazer cronometro do jogo funcionar. São declaradas em um escopo global devido a uma "limitação" da biblioteca Allegro para proporcionar compatibilidade com a linguagem C. 
+*	Funções para fazer cronometro do jogo funcionar. São declaradas em um escopo global devido a uma "limitação" da biblioteca Allegro para proporcionar compatibilidade com a linguagem C.
 */
 void inicializarContadorDeTempo();
 void incrementarTempoJogo();
@@ -59,7 +59,7 @@ int inicia (void)
       install_keyboard();
 	install_mouse();
       install_timer();
-	
+
       set_color_depth(COLOR_BITS);
       if (set_gfx_mode(VIDEO_CARD, MAX_X, MAX_Y, 0, 0) < 0)
       {
@@ -92,14 +92,14 @@ int main (void)
 
       finaliza();
       exit(0);
-}
+}END_OF_MAIN();
 
 void mostrarTelaDeApresentacao(BITMAP *buffer)
 {
-	buffer = load_bitmap("Imagens/imagemInicial.bmp", NULL);	
+	buffer = load_bitmap("Imagens/imagemInicial.bmp", NULL);
      	blit(buffer, screen, 0, 0, 0, 0, 800, 600 );
 
-	rest(3000); 
+	rest(3000);
 }
 
 void mostrarMenuInicial(BITMAP *buffer)
@@ -110,17 +110,17 @@ void mostrarMenuInicial(BITMAP *buffer)
 	MenuPrincipal *menuPrincipal = new MenuPrincipal(buffer);
 
 	while( menuPrincipal -> getIndiceSelecionado() != COMECAR_JOGO )
-	{	
+	{
 		//Uso do-while, pois preciso primeiro desenhar o menu para verificar o clique do mouse (apos uma partida)
 		do
 		{
-			poll_mouse();		
-			acquire_screen();	
+			poll_mouse();
+			acquire_screen();
 			show_mouse(NULL); //Sempre desabilitar o mouse antes de desenhar qualquer coisa na tela...
 			menuPrincipal -> desenhar();
 			show_mouse(screen);
       		release_screen();
-      		vsync();	
+      		vsync();
 		} while( menuPrincipal -> aoClicarComOMouse() == NENHUM_ITEM_SELECIONADO );
 
 		clear_keybuf();
@@ -128,11 +128,11 @@ void mostrarMenuInicial(BITMAP *buffer)
 		switch( menuPrincipal -> getIndiceSelecionado() )
 		{
 			case 0 :
-				menuEscolhaTimes -> inicializar(); //Para permitir entrar outras vezes no menu para selecionar times 
+				menuEscolhaTimes -> inicializar(); //Para permitir entrar outras vezes no menu para selecionar times
 				while( !menuEscolhaTimes -> getTimesJaForamSelecionados() )
 				{
-					poll_mouse();		
-					acquire_screen();	
+					poll_mouse();
+					acquire_screen();
 					show_mouse(NULL);
 					menuEscolhaTimes -> desenhar();
 					menuEscolhaTimes -> verificarCliqueDoMouse();
@@ -146,8 +146,8 @@ void mostrarMenuInicial(BITMAP *buffer)
 	  		case 1:
 				while( menuEscolhaTempoJogo -> aoClicarComOMouse() == NENHUM_ITEM_SELECIONADO )
 				{
-					poll_mouse();		
-					acquire_screen();	
+					poll_mouse();
+					acquire_screen();
 					show_mouse(NULL);
 					menuEscolhaTempoJogo -> desenhar();
 					show_mouse(screen);
@@ -156,7 +156,7 @@ void mostrarMenuInicial(BITMAP *buffer)
 				}
 			break;
 
-  	  		case 3 : 
+  	  		case 3 :
     				finaliza();
 				exit(0);
 	  		break;
@@ -180,7 +180,7 @@ void iniciarPartida(BITMAP *buffer, ConfiguracoesJogo *configuracoes)
 	bool resetarJogo = false;
 
 	controlador.processar(); //Para desenhar a tela inicial do jogo.
-	
+
 	//Só começa o jogo apos apertar 1
 	while(!key[KEY_1])
 	{
@@ -195,7 +195,7 @@ void iniciarPartida(BITMAP *buffer, ConfiguracoesJogo *configuracoes)
 		}
 	}
 
-	controlador.reiniciarPartida();			
+	controlador.reiniciarPartida();
 	tempoJogo.zerarTempo();
 
 	while (!key[KEY_ESC])
@@ -220,20 +220,20 @@ void iniciarPartida(BITMAP *buffer, ConfiguracoesJogo *configuracoes)
 					return;
 				}
 
-				if( key[KEY_3] ) //Posso resetar jogo durante o pause	
+				if( key[KEY_3] ) //Posso resetar jogo durante o pause
 					break;     //Saio do loop do pause para continuar, e entrar no if do reset
 			}
 
-			inicializarContadorDeTempo();			
+			inicializarContadorDeTempo();
 		}
 
 		if( key[KEY_3] )
 		{
-			controlador.reiniciarPartida();			
-			tempoJogo.zerarTempo();	
-			precisaPausarJogo = true;	
+			controlador.reiniciarPartida();
+			tempoJogo.zerarTempo();
+			precisaPausarJogo = true;
 		}
-		
+
 		controlador.setTempoJogo(tempoJogo);
 		controlador.processar();
 	}
